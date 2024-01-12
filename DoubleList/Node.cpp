@@ -6,3 +6,9 @@
 //
 
 #include "Node.hpp"
+
+Node::Node(string setName) {
+    name = setName;
+    next = nullptr;
+    prev = nullptr;
+}

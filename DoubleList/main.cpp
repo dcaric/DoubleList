@@ -6,9 +6,55 @@
 //
 
 #include <iostream>
+#include "Node.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+
+    vector<Node*> nodeList;
+    Node *currentPtr = nullptr;
+    Node *first = nullptr;
+    Node *last = nullptr;
+    
+    // define few nodes
+    cout << " How many nodes: " << endl;
+    int nodeNum;
+    cin >> nodeNum;
+    
+    for (int i = 0; i < nodeNum; i++) {
+        cout << "Write some text:" << endl;
+        string text;
+        cin >> text;
+        Node *tempNode = new Node(text);
+        nodeList.push_back(tempNode);
+        if (i > 0) {
+            currentPtr->next = tempNode;
+            tempNode->prev = currentPtr;
+        }
+        if (i == 0)first = tempNode;
+        if (i == nodeNum -1) last = tempNode;
+        currentPtr = tempNode;
+    }
+    
+    cout << "Forward direction" << endl;
+    currentPtr = first;
+    while (currentPtr != nullptr) {
+        cout << currentPtr->name << endl;
+        currentPtr = currentPtr->next;
+    }
+    
+    cout << endl;
+    cout << "Backward direction" << endl;
+    currentPtr = last;
+    while (currentPtr != nullptr) {
+        cout << currentPtr->name << endl;
+        currentPtr = currentPtr->prev;
+    }
+    
+    // delete pointers
+    for (int i = 0; i < nodeList.size(); i++) {
+        delete nodeList[i];
+    }
+    
+    
     return 0;
 }
