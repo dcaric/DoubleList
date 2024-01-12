@@ -12,16 +12,20 @@
 #include <string>
 
 using namespace std;
+template <typename T>
 
 class Node {
             
     
 public:
-    string name;
+    T value;
     Node *next;
     Node *prev;
     
-    Node(string);
-};
+    Node(T setValue) {
+        value = setValue;
+        next = nullptr;
+        prev = nullptr;
+    }};
 
 #endif /* Node_hpp */

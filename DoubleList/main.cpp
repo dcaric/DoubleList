@@ -10,10 +10,10 @@
 
 int main(int argc, const char * argv[]) {
 
-    vector<Node*> nodeList;
-    Node *currentPtr = nullptr;
-    Node *first = nullptr;
-    Node *last = nullptr;
+    vector<Node<string>*> nodeList;
+    Node<string> *currentPtr = nullptr;
+    Node<string> *first = nullptr;
+    Node<string> *last = nullptr;
     
     // define few nodes
     cout << " How many nodes: " << endl;
@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
         cout << "Write some text:" << endl;
         string text;
         cin >> text;
-        Node *tempNode = new Node(text);
+        Node<string> *tempNode = new Node(text);
         nodeList.push_back(tempNode);
         if (i > 0) {
             currentPtr->next = tempNode;
@@ -38,7 +38,7 @@ int main(int argc, const char * argv[]) {
     cout << "Forward direction" << endl;
     currentPtr = first;
     while (currentPtr != nullptr) {
-        cout << currentPtr->name << endl;
+        cout << currentPtr->value << endl;
         currentPtr = currentPtr->next;
     }
     
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
     cout << "Backward direction" << endl;
     currentPtr = last;
     while (currentPtr != nullptr) {
-        cout << currentPtr->name << endl;
+        cout << currentPtr->value << endl;
         currentPtr = currentPtr->prev;
     }
     
